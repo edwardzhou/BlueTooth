@@ -16,4 +16,6 @@ public interface BlueToothDevice {
     public boolean isSupported(String feature);
 
     public boolean doCommand(DeviceCommand cmd);
+
+    public void registerCommandFactory(DeviceCommandFactory factory);
 }

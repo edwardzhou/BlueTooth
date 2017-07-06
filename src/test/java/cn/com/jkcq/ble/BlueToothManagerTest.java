@@ -1,6 +1,6 @@
 package cn.com.jkcq.ble;
 
-import cn.com.jkcq.ble.drivers.SimulateDriver;
+import cn.com.jkcq.ble.drivers.simulate.SimulateDriver;
 
 import org.testng.annotations.*;
 
