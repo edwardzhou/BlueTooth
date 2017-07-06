@@ -33,4 +33,10 @@ public class SimulateDriverTest {
         assertEquals(data.length, 4);
         assertEquals(data, new byte[]{0x10, 0x20, 0x30, 0x40});
     }
+
+    @Test
+    public void testCreateUnknownCommand() {
+        DeviceCommand command = driver.createCommand("NoSuchCommand");
+        assertNull(command);
+    }
 }

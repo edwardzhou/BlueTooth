@@ -49,6 +49,10 @@ public class SimulateDriver implements BlueToothDevice {
 
     public DeviceCommand createCommand(String commandName, Object... params) {
         DeviceCommandFactory factory = this.factoriesMap.get(commandName);
+        if (factory == null) {
+            return null;
+        }
+
         return factory.createCommand(params);
     }
 
