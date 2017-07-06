@@ -1,6 +1,5 @@
 package cn.com.jkcq.ble;
 
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -23,8 +22,8 @@ public class BlueToothManagerErrorTest {
 
     @Test
     public void testScan_forBluetoothDisabled() {
-        this.manager.setAdapter(new BlueAdapter().setEnabled(false));
+        this.manager.setAdapter(new MockDeviceAdapter().setAdapterEnabled(false));
 
-        assertEquals(this.manager.scan(), BLE_R_BLUETOOTH_DISABLED);
+        assertEquals(this.manager.scan(null), BLE_R_BLUETOOTH_DISABLED);
     }
 }

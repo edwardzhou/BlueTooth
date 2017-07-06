@@ -1,7 +1,6 @@
 package cn.com.jkcq.ble;
 
 import cn.com.jkcq.ble.drivers.SimulateDriver;
-import org.testng.annotations.BeforeClass;
 
 import org.testng.annotations.*;
 
@@ -32,7 +31,7 @@ public class BlueToothManagerTest {
 
     @Test
     public void testIsBlueToothEnabled_ForDisabled() {
-        BlueAdapter disabledAdapter = new BlueAdapter().setEnabled(false);
+        MockDeviceAdapter disabledAdapter = new MockDeviceAdapter().setAdapterEnabled(false);
         this.manager.setAdapter(disabledAdapter);
         assertFalse(this.manager.isBlueToothEnabled());
     }
@@ -40,16 +39,17 @@ public class BlueToothManagerTest {
     @Test
     public void testScan_forOneDevice() {
 
+        this.manager.setScannerFactory(new MockScannerFactory());
         ArrayList<DeviceInfo> devices = new ArrayList<DeviceInfo>();
 
-        DeviceScanListener listener = new DeviceScanListener() {
+        ScanListener listener = new ScanListener() {
             @Override
             public void onDeviceFound(DeviceInfo deviceInfo) {
                 devices.add(deviceInfo);
             }
         };
 
-        assertEquals(this.manager.scan(), BLE_R_OK);
+        assertEquals(this.manager.scan(listener), BLE_R_OK);
         assertEquals(devices.size(), 1);
     }
 

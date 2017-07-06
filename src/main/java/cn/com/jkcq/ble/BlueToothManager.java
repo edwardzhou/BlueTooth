@@ -10,18 +10,27 @@ import static cn.com.jkcq.ble.Constants.*;
  */
 public class BlueToothManager {
     private static BlueToothManager instance = null;
-    private BlueAdapter adapter = null;
+    private DeviceAdapter adapter = null;
     private Map<String, BlueToothDevice> drivers = new HashMap<String, BlueToothDevice>();
+    private ScannerFactory scannerFactory = null;
 
     public BlueToothManager() {
         this.resetDefaultAdapter();
     }
 
-    public BlueAdapter getAdapter() {
+    public ScannerFactory getScannerFactory() {
+        return this.scannerFactory;
+    }
+
+    public void setScannerFactory(ScannerFactory scannerFactory) {
+        this.scannerFactory = scannerFactory;
+    }
+
+    public DeviceAdapter getAdapter() {
         return this.adapter;
     }
 
-    public void setAdapter(BlueAdapter adapter) {
+    public void setAdapter(DeviceAdapter adapter) {
         this.adapter = adapter;
     }
 
@@ -34,14 +43,16 @@ public class BlueToothManager {
     }
 
     public boolean isBlueToothEnabled() {
-        return this.adapter.getEnabled();
+        return this.adapter.isAdapterEnabled();
     }
 
-    public int scan() {
-        if (! this.adapter.getEnabled()) {
+    public int scan(ScanListener listener) {
+        if (! this.adapter.isAdapterEnabled()) {
            return BLE_R_BLUETOOTH_DISABLED;
         }
-
+        DeviceScanner scanner = this.scannerFactory.getScanner();
+        scanner.setListener(listener);
+        scanner.start();
         //... do scan...
         return BLE_R_OK;
     }
@@ -66,6 +77,6 @@ public class BlueToothManager {
     }
 
     public void resetDefaultAdapter() {
-        this.setAdapter(new BlueAdapter());
+        this.setAdapter(new MockDeviceAdapter());
     }
 }
