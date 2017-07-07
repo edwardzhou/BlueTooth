@@ -20,6 +20,15 @@ public class GetStepCommandFactory implements DeviceCommandFactory {
 
     private static DeviceCommandFactory instance = null;
 
+    /**
+     * 创建获取步数指令
+     *
+     * example:
+     * DeviceCommand command = GetStepCommandFactory.getInstance().createCommand();
+     *
+     * @param params - 可变参数, 本指令无需传递任何参数
+     * @return @DeviceCommand
+     */
     public DeviceCommand createCommand(Object... params) {
         BaseDeviceCommand cmd = new BaseDeviceCommand();
         cmd.setCommandName(COMMAND_NAME);
@@ -30,19 +39,37 @@ public class GetStepCommandFactory implements DeviceCommandFactory {
         return cmd;
     }
 
+    /**
+     * 指令名称
+     * @return
+     */
+    @Override
     public String getCommandName() {
         return COMMAND_NAME;
     }
 
+    /**
+     * 对应特征/通道UUID
+     * @return
+     */
+    @Override
     public UUID getCharacteristicUUID() {
         return CHARACTERISTIC_UUID;
     }
 
+    /**
+     * 对应服务UUID
+     * @return
+     */
     @Override
     public UUID getServiceUUID() {
         return SERVICE_UUID;
     }
 
+    /**
+     * 获取单例
+     * @return
+     */
     public static DeviceCommandFactory getInstance() {
         if (instance == null) {
             instance = new GetStepCommandFactory();
