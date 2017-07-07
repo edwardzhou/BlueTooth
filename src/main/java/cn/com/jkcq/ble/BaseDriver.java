@@ -21,6 +21,11 @@ public abstract class BaseDriver implements DeviceDriver {
     protected Map<UUID, Object> characteristicsMap = new HashMap<UUID, Object>();
 
 
+    private RealTimeDataListener realTimeDataListener = null;
+
+    private DeviceAdapter adapter = null;
+
+
     /**
      * 驱动版本号
      * @return
@@ -58,8 +63,9 @@ public abstract class BaseDriver implements DeviceDriver {
      * @param cmd
      * @return
      */
-    public boolean doCommand(DeviceCommand cmd) {
-        return false;
+    public int doCommand(DeviceCommand cmd) {
+//        return false;
+        return this.adapter.doCommand(cmd);
     }
 
     /**
@@ -84,6 +90,23 @@ public abstract class BaseDriver implements DeviceDriver {
         }
 
         return factory.createCommand(params);
+    }
+
+    public RealTimeDataListener getRealTimeDataListener() {
+        return this.realTimeDataListener;
+    }
+
+    public void setRealTimeDataListener(RealTimeDataListener listener) {
+        this.realTimeDataListener = listener;
+        this.adapter.setRealTimeDataListener(listener);
+    }
+
+    public DeviceAdapter getAdapter() {
+        return this.adapter;
+    }
+
+    public void setAdapter(DeviceAdapter adapter) {
+        this.adapter = adapter;
     }
 
 }

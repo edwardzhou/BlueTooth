@@ -1,5 +1,8 @@
 package cn.com.jkcq.ble;
 
+import cn.com.jkcq.ble.mocks.MockDeviceAdapter;
+import cn.com.jkcq.ble.mocks.MockScannerFactory;
+import cn.com.jkcq.ble.mocks.MockScannerFactory3;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
@@ -51,6 +54,26 @@ public class BluetoothManagerTest {
         assertEquals(devices.size(), 1);
     }
 
+    @Test
+    public void testScan_for3Devices() {
+        this.manager.setScannerFactory(new MockScannerFactory3());
+        ArrayList<DeviceInfo> devices = new ArrayList<DeviceInfo>();
+
+        ScanListener listener = new ScanListener() {
+            @Override
+            public void onDeviceFound(DeviceInfo deviceInfo) {
+                devices.add(deviceInfo);
+            }
+        };
+
+        assertEquals(this.manager.scan(listener), BLE_R_OK);
+        try {
+            Thread.sleep(500);
+        } catch(Exception ex) {
+
+        }
+        assertEquals(devices.size(), 3);
+    }
 
     @Test
     public void testConnectNonMatchedDevice() {
@@ -62,7 +85,7 @@ public class BluetoothManagerTest {
         deviceInfo.deviceUUID = "Non Exists";
 
         DeviceDriver device = this.manager.connectTo(deviceInfo);
-        assert device == null;
+        assertNull(device);
     }
 
 }

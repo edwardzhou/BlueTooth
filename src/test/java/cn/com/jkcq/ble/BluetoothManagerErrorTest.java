@@ -1,5 +1,6 @@
 package cn.com.jkcq.ble;
 
+import cn.com.jkcq.ble.mocks.MockDeviceAdapter;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

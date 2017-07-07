@@ -8,6 +8,11 @@ public interface DeviceAdapter {
 
     int scanDevices();
 
+    int doCommand(DeviceCommand command);
+
     ScanListener getScanListener();
     void setScanListener(ScanListener listener);
+
+    RealTimeDataListener getRealTimeDataListener();
+    void setRealTimeDataListener(RealTimeDataListener listener);
 }

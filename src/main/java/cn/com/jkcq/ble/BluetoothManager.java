@@ -1,5 +1,7 @@
 package cn.com.jkcq.ble;
 
+import cn.com.jkcq.ble.mocks.MockDeviceAdapter;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,8 @@ public class BluetoothManager {
     private DeviceAdapter adapter = null;
     private Map<String, DeviceDriver> drivers = new HashMap<String, DeviceDriver>();
     private ScannerFactory scannerFactory = null;
+    private RealTimeDataListener readTimeDataListener = null;
+    private DeviceDriver connectedDriver = null;
 
     public BluetoothManager() {
         this.resetDefaultAdapter();
@@ -63,8 +67,11 @@ public class BluetoothManager {
 
     public DeviceDriver connectTo(DeviceInfo DeviceInfo) {
         String deviceName = DeviceInfo.deviceName;
-        DeviceDriver driver = this.drivers.get(deviceName);
-        return driver;
+//        DeviceDriver driver = this.drivers.get(deviceName);
+//
+//        return driver;
+        this.connectedDriver = this.drivers.get(deviceName);
+        return this.connectedDriver;
     }
 
 
@@ -78,5 +85,20 @@ public class BluetoothManager {
 
     public void resetDefaultAdapter() {
         this.setAdapter(new MockDeviceAdapter());
+    }
+
+    public void setRealTimeDataListener(RealTimeDataListener listener) {
+        this.readTimeDataListener = listener;
+        this.connectedDriver.setRealTimeDataListener(listener);
+    }
+
+    public void sendCommand(String commandName) {
+        DeviceCommand command = this.connectedDriver.createCommand(commandName);
+
+        sendCommand(command);
+    }
+
+    public void sendCommand(DeviceCommand command) {
+        this.connectedDriver.doCommand(command);
     }
 }

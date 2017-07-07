@@ -38,4 +38,9 @@ public interface SimulateConstants {
      * 获取步数命令
      */
     String COMMAND_GET_STEP = "GET_STEP";
+
+    /**
+     * 实时同步数据
+     */
+    String COMMAND_REAL_TIME_DATA = "REAL_TIME_DATA";
 }

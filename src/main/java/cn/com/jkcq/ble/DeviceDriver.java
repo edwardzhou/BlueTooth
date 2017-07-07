@@ -11,11 +11,11 @@ public interface DeviceDriver {
     public DeviceInfo getDeviceInfo();
 //    public java.util.List<String> characterID;
 
-    public java.util.List<String> getSupportedFeatures();
+    java.util.List<String> getSupportedFeatures();
 
-    public boolean isSupported(String feature);
+    boolean isSupported(String feature);
 
-    public boolean doCommand(DeviceCommand cmd);
+    int doCommand(DeviceCommand cmd);
 
     /**
      * 根据 commandName (指令名称) 相应的指令工厂创建指令
@@ -23,12 +23,14 @@ public interface DeviceDriver {
      * @param params - 可变参数
      * @return @DeviceCommand
      */
-    public DeviceCommand createCommand(String commandName, Object... params);
+    DeviceCommand createCommand(String commandName, Object... params);
 
     /**
      * 登记驱动程序所支持的指令的工厂
      * 用于createCommand时，创建相应的指令
      * @param factory - 指令的工厂实例
      */
-    public void registerCommandFactory(DeviceCommandFactory factory);
+    void registerCommandFactory(DeviceCommandFactory factory);
+
+    void setRealTimeDataListener(RealTimeDataListener listener);
 }
