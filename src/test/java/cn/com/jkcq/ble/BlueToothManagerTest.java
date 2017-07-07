@@ -53,17 +53,6 @@ public class BlueToothManagerTest {
         assertEquals(devices.size(), 1);
     }
 
-    @Test
-    public void testConnect() {
-        DeviceDriver driver = new SimulateDriver();
-        this.manager.registerDriver(driver);
-
-        DeviceInfo deviceInfo = new DeviceInfo();
-        deviceInfo.deviceName = "SimulateDriver";
-        DeviceDriver connectedDriver = this.manager.connectTo(deviceInfo);
-        assertNotNull(connectedDriver);
-        assertEquals(connectedDriver.getDriverName(), "SimulateDriver");
-    }
 
     @Test
     public void testConnectNonMatchedDevice() {
@@ -77,4 +66,5 @@ public class BlueToothManagerTest {
         DeviceDriver device = this.manager.connectTo(deviceInfo);
         assert device == null;
     }
+
 }
