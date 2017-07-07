@@ -55,15 +55,14 @@ public class BlueToothManagerTest {
 
     @Test
     public void testConnect() {
-
         DeviceDriver driver = new SimulateDriver();
         this.manager.registerDriver(driver);
 
         DeviceInfo deviceInfo = new DeviceInfo();
         deviceInfo.deviceName = "SimulateDriver";
-        DeviceDriver device = this.manager.connectTo(deviceInfo);
-        assertNotNull(device);
-        assertEquals(device.getDriverName(), "SimulateDriver");
+        DeviceDriver connectedDriver = this.manager.connectTo(deviceInfo);
+        assertNotNull(connectedDriver);
+        assertEquals(connectedDriver.getDriverName(), "SimulateDriver");
     }
 
     @Test
