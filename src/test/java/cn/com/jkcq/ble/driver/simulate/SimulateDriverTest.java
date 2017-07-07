@@ -1,6 +1,7 @@
 package cn.com.jkcq.ble.driver.simulate;
 
 import cn.com.jkcq.ble.DeviceCommand;
+import cn.com.jkcq.ble.DeviceDriver;
 import cn.com.jkcq.ble.drivers.simulate.GetStepCommandFactory;
 import cn.com.jkcq.ble.drivers.simulate.SimulateDriver;
 import org.testng.annotations.BeforeMethod;
@@ -17,7 +18,7 @@ import static org.testng.Assert.*;
  */
 public class SimulateDriverTest {
 
-    private SimulateDriver driver = null;
+    private DeviceDriver driver = null;
 
     @BeforeMethod
     public void setUp() {
