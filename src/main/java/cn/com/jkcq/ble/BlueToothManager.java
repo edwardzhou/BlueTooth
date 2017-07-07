@@ -11,7 +11,7 @@ import static cn.com.jkcq.ble.Constants.*;
 public class BlueToothManager {
     private static BlueToothManager instance = null;
     private DeviceAdapter adapter = null;
-    private Map<String, BlueToothDevice> drivers = new HashMap<String, BlueToothDevice>();
+    private Map<String, DeviceDriver> drivers = new HashMap<String, DeviceDriver>();
     private ScannerFactory scannerFactory = null;
 
     public BlueToothManager() {
@@ -61,18 +61,18 @@ public class BlueToothManager {
         return null;
     }
 
-    public BlueToothDevice connectTo(DeviceInfo DeviceInfo) {
+    public DeviceDriver connectTo(DeviceInfo DeviceInfo) {
         String deviceName = DeviceInfo.deviceName;
-        BlueToothDevice driver = this.drivers.get(deviceName);
+        DeviceDriver driver = this.drivers.get(deviceName);
         return driver;
     }
 
 
-    public Map<String, BlueToothDevice> getSupportedDrivers() {
+    public Map<String, DeviceDriver> getSupportedDrivers() {
         return this.drivers;
     }
 
-    public void registerDriver(BlueToothDevice device) {
+    public void registerDriver(DeviceDriver device) {
         this.drivers.put(device.getDriverName(), device);
     }
 

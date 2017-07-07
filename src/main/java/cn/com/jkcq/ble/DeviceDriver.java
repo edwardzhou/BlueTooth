@@ -4,7 +4,7 @@ package cn.com.jkcq.ble;
 /**
  * Created by edwardzhou on 2017/7/3.
  */
-public interface BlueToothDevice {
+public interface DeviceDriver {
     public String getDriverName();
     public String getDriverVersion();
     public String getProtocolVersion();

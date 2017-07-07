@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Created by edwardzhou on 2017/7/7.
  */
-public abstract class BaseDriver implements BlueToothDevice {
+public abstract class BaseDriver implements DeviceDriver {
 
     protected Map<String, DeviceCommandFactory> factoriesMap = new HashMap<String, DeviceCommandFactory>();
 //
