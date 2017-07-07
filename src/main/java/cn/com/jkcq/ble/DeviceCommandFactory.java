@@ -8,5 +8,6 @@ import java.util.UUID;
 public interface DeviceCommandFactory {
     DeviceCommand createCommand(Object... params);
     String getCommandName();
-    UUID getUUID();
+    UUID getCharacteristicUUID();
+    UUID getServiceUUID();
 }
