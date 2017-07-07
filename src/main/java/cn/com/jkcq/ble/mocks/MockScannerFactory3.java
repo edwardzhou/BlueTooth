@@ -12,7 +12,7 @@ public class MockScannerFactory3 implements ScannerFactory {
 
     public DeviceScanner getScanner() {
         DeviceScanner scanner = new DeviceScanner();
-        MockDeviceAdapter adapter = new MockDeviceAdapter();
+        MockThreadedDeviceAdapter adapter = new MockThreadedDeviceAdapter();
 
         DeviceInfo deviceInfo = null;
         deviceInfo = new DeviceInfo();
