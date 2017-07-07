@@ -11,6 +11,7 @@ import java.util.UUID;
 
 import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.CHARACTERISTIC_UUID_1;
 import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.COMMAND_GET_STEP;
+import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.SERVICE_UUID_1;
 import static org.testng.Assert.*;
 
 /**
@@ -32,6 +33,7 @@ public class SimulateDriverTest {
         assertNotNull(command);
         assertEquals(command.getCommandName(), COMMAND_GET_STEP);
         assertEquals(command.getCharacteristicUUID(), UUID.fromString(CHARACTERISTIC_UUID_1));
+        assertEquals(command.getServiceUUID(), UUID.fromString(SERVICE_UUID_1));
         byte[] data = command.getData();
         assertEquals(data.length, 4);
         assertEquals(data, new byte[]{0x10, 0x20, 0x30, 0x40});
