@@ -8,13 +8,13 @@ import static cn.com.jkcq.ble.Constants.*;
 /**
  * Created by edwardzhou on 2017/7/3.
  */
-public class BlueToothManager {
-    private static BlueToothManager instance = null;
+public class BluetoothManager {
+    private static BluetoothManager instance = null;
     private DeviceAdapter adapter = null;
     private Map<String, DeviceDriver> drivers = new HashMap<String, DeviceDriver>();
     private ScannerFactory scannerFactory = null;
 
-    public BlueToothManager() {
+    public BluetoothManager() {
         this.resetDefaultAdapter();
     }
 
@@ -34,9 +34,9 @@ public class BlueToothManager {
         this.adapter = adapter;
     }
 
-    public static BlueToothManager getInstance() {
+    public static BluetoothManager getInstance() {
         if (instance == null) {
-            instance = new BlueToothManager();
+            instance = new BluetoothManager();
         }
 
         return instance;

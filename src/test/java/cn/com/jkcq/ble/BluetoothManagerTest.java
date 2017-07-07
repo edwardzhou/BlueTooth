@@ -1,7 +1,5 @@
 package cn.com.jkcq.ble;
 
-import cn.com.jkcq.ble.drivers.simulate.SimulateDriver;
-
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
@@ -13,12 +11,12 @@ import static cn.com.jkcq.ble.Constants.*;
 /**
  * Created by edwardzhou on 2017/7/3.
  */
-public class BlueToothManagerTest {
-    private BlueToothManager manager = null;
+public class BluetoothManagerTest {
+    private BluetoothManager manager = null;
 
     @BeforeMethod
     public void setUp(){
-        this.manager = new BlueToothManager();
+        this.manager = new BluetoothManager();
     }
 
     public void tearDown(){

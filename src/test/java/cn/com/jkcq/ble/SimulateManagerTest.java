@@ -12,15 +12,18 @@ import static org.testng.Assert.assertNotNull;
  */
 public class SimulateManagerTest {
 
-    private BlueToothManager manager = null;
+    private BluetoothManager manager = null;
 
     @BeforeMethod
     public void setUp() {
-        manager = new BlueToothManager();
+        manager = new BluetoothManager();
         DeviceDriver simDriver = new SimulateDriver();
         manager.registerDriver(simDriver);
     }
 
+    /**
+     * 测试模拟设备链接
+     */
     @Test
     public void testConnect() {
         DeviceInfo deviceInfo = new DeviceInfo();
@@ -31,7 +34,7 @@ public class SimulateManagerTest {
     }
 
     /**
-     * 测试是设备实时
+     * 测试是设备实时数据回传
      */
     @Test
     public void testReceiveRealTimeData() {
