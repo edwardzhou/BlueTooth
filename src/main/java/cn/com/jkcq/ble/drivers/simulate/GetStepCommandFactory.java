@@ -15,16 +15,16 @@ import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.SERVICE_UUID_1;
  */
 public class GetStepCommandFactory implements DeviceCommandFactory {
     private static final String COMMAND_NAME = COMMAND_GET_STEP;
-    private static final UUID characteristicUUID = UUID.fromString(CHARACTERISTIC_UUID_1);
-    private static final UUID serviceUUID = UUID.fromString(SERVICE_UUID_1);
+    private static final UUID CHARACTERISTIC_UUID = UUID.fromString(CHARACTERISTIC_UUID_1);
+    private static final UUID SERVICE_UUID = UUID.fromString(SERVICE_UUID_1);
 
     private static DeviceCommandFactory instance = null;
 
     public DeviceCommand createCommand(Object... params) {
         BaseDeviceCommand cmd = new BaseDeviceCommand();
         cmd.setCommandName(COMMAND_NAME);
-        cmd.setCharacteristicUUID(characteristicUUID);
-        cmd.setServiceUUID(serviceUUID);
+        cmd.setCharacteristicUUID(CHARACTERISTIC_UUID);
+        cmd.setServiceUUID(SERVICE_UUID);
         cmd.setData(new byte[] {0x10, 0x20, 0x30, 0x40});
 
         return cmd;
@@ -35,12 +35,12 @@ public class GetStepCommandFactory implements DeviceCommandFactory {
     }
 
     public UUID getCharacteristicUUID() {
-        return characteristicUUID;
+        return CHARACTERISTIC_UUID;
     }
 
     @Override
     public UUID getServiceUUID() {
-        return this.serviceUUID;
+        return SERVICE_UUID;
     }
 
     public static DeviceCommandFactory getInstance() {
