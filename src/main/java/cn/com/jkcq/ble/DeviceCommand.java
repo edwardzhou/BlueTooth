@@ -13,10 +13,16 @@ public interface DeviceCommand {
     String getCommandName();
 
     /**
-     * 获取命令对应的特征通道
-     * @return
+     * 获取命令对应的特征通道UUID
+     * @return UUID
      */
-    UUID getUUID();
+    UUID getCharacteristicUUID();
+
+    /**
+     * 获取命令对应的服务UUID
+     * @return UUID
+     */
+    UUID getServiceUUID();
 
     /**
      * 指令字节数据

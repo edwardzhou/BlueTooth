@@ -8,7 +8,8 @@ import java.util.UUID;
 public class BaseDeviceCommand implements DeviceCommand {
     private String commandName = "";
     private byte[] data = null;
-    private UUID uuid = null;
+    private UUID characteristicUUID = null;
+    private UUID serviceUUID = null;
 
     public String getCommandName() {
         return this.commandName;
@@ -18,12 +19,20 @@ public class BaseDeviceCommand implements DeviceCommand {
         this.commandName = commandName;
     }
 
-    public UUID getUUID() {
-        return this.uuid;
+    public UUID getCharacteristicUUID() {
+        return this.characteristicUUID;
     }
 
-    public void setUUID(UUID uuid) {
-        this.uuid = uuid;
+    public void setCharacteristicUUID(UUID uuid) {
+        this.characteristicUUID = uuid;
+    }
+
+    public UUID getServiceUUID() {
+        return this.serviceUUID;
+    }
+
+    public void setServiceUUID(UUID serviceUUID) {
+        this.serviceUUID = serviceUUID;
     }
 
     public byte[] getData() {

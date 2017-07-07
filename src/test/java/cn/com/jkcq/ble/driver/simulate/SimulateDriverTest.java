@@ -31,7 +31,7 @@ public class SimulateDriverTest {
         DeviceCommand command = driver.createCommand(COMMAND_GET_STEP);
         assertNotNull(command);
         assertEquals(command.getCommandName(), COMMAND_GET_STEP);
-        assertEquals(command.getUUID(), UUID.fromString(CHARACTERISTIC_UUID_1));
+        assertEquals(command.getCharacteristicUUID(), UUID.fromString(CHARACTERISTIC_UUID_1));
         byte[] data = command.getData();
         assertEquals(data.length, 4);
         assertEquals(data, new byte[]{0x10, 0x20, 0x30, 0x40});

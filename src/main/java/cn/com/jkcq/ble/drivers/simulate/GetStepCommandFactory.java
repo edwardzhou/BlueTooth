@@ -21,7 +21,7 @@ public class GetStepCommandFactory implements DeviceCommandFactory {
     public DeviceCommand createCommand(Object... params) {
         BaseDeviceCommand cmd = new BaseDeviceCommand();
         cmd.setCommandName(COMMAND_NAME);
-        cmd.setUUID(uuid);
+        cmd.setCharacteristicUUID(uuid);
         cmd.setData(new byte[] {0x10, 0x20, 0x30, 0x40});
 
         return cmd;
