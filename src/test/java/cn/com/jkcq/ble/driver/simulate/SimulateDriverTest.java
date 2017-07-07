@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
+import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.CHARACTERISTIC_UUID_1;
+import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.COMMAND_GET_STEP;
 import static org.testng.Assert.*;
 
 /**
@@ -25,10 +27,10 @@ public class SimulateDriverTest {
 
     @Test
     public void testCreateGetStepCommand() {
-        DeviceCommand command = driver.createCommand("GET_STEP");
+        DeviceCommand command = driver.createCommand(COMMAND_GET_STEP);
         assertNotNull(command);
-        assertEquals(command.getCommandName(), "GET_STEP");
-        assertEquals(command.getUUID(), UUID.fromString("00000000-0000-0000-8000-000000000001"));
+        assertEquals(command.getCommandName(), COMMAND_GET_STEP);
+        assertEquals(command.getUUID(), UUID.fromString(CHARACTERISTIC_UUID_1));
         byte[] data = command.getData();
         assertEquals(data.length, 4);
         assertEquals(data, new byte[]{0x10, 0x20, 0x30, 0x40});

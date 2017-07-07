@@ -6,12 +6,15 @@ import cn.com.jkcq.ble.DeviceCommandFactory;
 
 import java.util.UUID;
 
+import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.CHARACTERISTIC_UUID_1;
+import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.COMMAND_GET_STEP;
+
 /**
  * Created by edwardzhou on 2017/7/6.
  */
 public class GetStepCommandFactory implements DeviceCommandFactory {
-    private static final String COMMAND_NAME = "GET_STEP";
-    private static final UUID uuid = UUID.fromString("00000000-0000-0000-8000-000000000001");
+    private static final String COMMAND_NAME = COMMAND_GET_STEP;
+    private static final UUID uuid = UUID.fromString(CHARACTERISTIC_UUID_1);
 
     private static DeviceCommandFactory instance = null;
 
