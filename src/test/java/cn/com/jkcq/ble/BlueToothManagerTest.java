@@ -78,28 +78,4 @@ public class BlueToothManagerTest {
         DeviceDriver device = this.manager.connectTo(deviceInfo);
         assert device == null;
     }
-
-    public void testConnectNonSupportedDevice() {
-        // this.manager.set....;
-
-        DeviceInfo deviceInfo = new DeviceInfo();
-        deviceInfo.deviceName = "XXX";
-        deviceInfo.deviceMac = "Non Exists";
-        deviceInfo.deviceUUID = "Non Exists";
-
-        DeviceDriver device = this.manager.connectTo(deviceInfo);
-        assert device == null;
-    }
-
-
-    public void testConnectToSimulator() {
-        DeviceInfo deviceInfo = new DeviceInfo();
-        deviceInfo.deviceName = "Simulator";
-        deviceInfo.deviceMac = "Non Exists";
-        deviceInfo.deviceUUID = "Non Exists";
-
-        DeviceDriver device = this.manager.connectTo(deviceInfo);
-        assert device.getClass().getName() == "BlueToothSimulator";
-
-    }
 }
