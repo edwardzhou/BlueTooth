@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import static cn.com.jkcq.ble.Constants.BLE_R_DEVICE_UNSUPPORTED;
+
 /**
  * Created by edwardzhou on 2017/7/7.
  */
@@ -56,6 +58,16 @@ public abstract class BaseDriver implements DeviceDriver {
 
     public boolean isSupported(String feature) {
         return false;
+    }
+
+    /**
+     * 将驱动与设备绑定
+     * @param deviceInfo - 要绑定的设备
+     * @return
+     */
+    @Override
+    public int bindDevice(DeviceInfo deviceInfo) {
+        return BLE_R_DEVICE_UNSUPPORTED;
     }
 
     /**

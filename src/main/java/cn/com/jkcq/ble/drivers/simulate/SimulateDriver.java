@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static cn.com.jkcq.ble.Constants.BLE_R_OK;
 import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.COMMAND_REAL_TIME_DATA;
 
 /**
@@ -18,4 +19,8 @@ public class SimulateDriver extends BaseDriver {
         return "SimulateDriver";
     }
 
+    @Override
+    public int bindDevice(DeviceInfo deviceInfo) {
+        return BLE_R_OK;
+    }
 }

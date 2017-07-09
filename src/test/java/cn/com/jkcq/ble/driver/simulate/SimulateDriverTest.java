@@ -2,6 +2,7 @@ package cn.com.jkcq.ble.driver.simulate;
 
 import cn.com.jkcq.ble.DeviceCommand;
 import cn.com.jkcq.ble.DeviceDriver;
+import cn.com.jkcq.ble.DeviceInfo;
 import cn.com.jkcq.ble.drivers.simulate.GetStepCommandFactory;
 import cn.com.jkcq.ble.drivers.simulate.SimulateDriver;
 import org.testng.annotations.BeforeMethod;
@@ -9,6 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
+import static cn.com.jkcq.ble.Constants.BLE_R_OK;
 import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.CHARACTERISTIC_UUID_1;
 import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.COMMAND_GET_STEP;
 import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.SERVICE_UUID_1;
@@ -25,6 +27,12 @@ public class SimulateDriverTest {
     public void setUp() {
         driver = new SimulateDriver();
         driver.registerCommandFactory(GetStepCommandFactory.getInstance());
+    }
+
+    @Test
+    public void testBindDevice() {
+        DeviceInfo deviceInfo = new DeviceInfo("SimulateDevice");
+        assertEquals(driver.bindDevice(deviceInfo), BLE_R_OK);
     }
 
     @Test

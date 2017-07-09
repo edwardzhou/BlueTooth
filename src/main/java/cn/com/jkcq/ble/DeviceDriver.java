@@ -15,6 +15,19 @@ public interface DeviceDriver {
 
     boolean isSupported(String feature);
 
+    /**
+     * 把驱动与设备绑定
+     * 绑定的过程, 需要验证驱动的服务与通道/特征必须相符
+     * @param deviceInfo - 要绑定的设备
+     * @return
+     */
+    int bindDevice(DeviceInfo deviceInfo);
+
+    /**
+     * 执行蓝牙指令
+     * @param cmd
+     * @return
+     */
     int doCommand(DeviceCommand cmd);
 
     /**
