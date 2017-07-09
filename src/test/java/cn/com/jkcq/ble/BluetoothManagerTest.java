@@ -42,6 +42,9 @@ public class BluetoothManagerTest {
     public void testScan_forOneDevice() {
         MockScannerFactory factory = new MockScannerFactory();
         MockDeviceAdapter deviceAdapter = new MockDeviceAdapter();
+        /*
+        模拟蓝牙发现一个设备
+         */
         deviceAdapter.setDeviceScanEmitter(new DeviceScanEmitter() {
             @Override
             public void emit(ScanListener listener) {
@@ -70,6 +73,9 @@ public class BluetoothManagerTest {
     public void testScan_for3Devices() {
         MockScannerFactory factory = new MockScannerFactory();
         MockDeviceAdapter deviceAdapter = new MockDeviceAdapter();
+        /*
+        启用多线程，模拟蓝牙模块异步通知设备发现的过程
+         */
         deviceAdapter.setDeviceScanEmitter(new DeviceScanEmitter() {
             @Override
             public void emit(final ScanListener listener) {
@@ -100,6 +106,7 @@ public class BluetoothManagerTest {
         };
 
         assertEquals(this.manager.scan(listener), BLE_R_OK);
+        // 暂停500ms, 等待蓝牙发现
         try {
             Thread.sleep(500);
         } catch(Exception ex) {
