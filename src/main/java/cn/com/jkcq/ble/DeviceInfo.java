@@ -9,4 +9,9 @@ public class DeviceInfo {
     public String deviceUUID;
     public String serviceUUID;
     public int rssiValue; // 信号强弱
+
+    public DeviceInfo() {}
+    public DeviceInfo(String deviceName) {
+        this.deviceName = deviceName;
+    }
 }

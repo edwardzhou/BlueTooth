@@ -65,7 +65,6 @@ public class SimulateManagerTest {
         // sleep (5);
         assertNotNull(realTimeData[0]);
         assertTrue(realTimeData[0].getSteps() > 0);
-
     }
 
 }

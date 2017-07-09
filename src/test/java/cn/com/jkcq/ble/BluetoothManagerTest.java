@@ -1,11 +1,12 @@
 package cn.com.jkcq.ble;
 
+import cn.com.jkcq.ble.mocks.DeviceScanEmitter;
 import cn.com.jkcq.ble.mocks.MockDeviceAdapter;
 import cn.com.jkcq.ble.mocks.MockScannerFactory;
-import cn.com.jkcq.ble.mocks.MockScannerFactory3;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.testng.Assert.*;
 import static cn.com.jkcq.ble.Constants.*;
@@ -39,8 +40,19 @@ public class BluetoothManagerTest {
 
     @Test
     public void testScan_forOneDevice() {
+        MockScannerFactory factory = new MockScannerFactory();
+        MockDeviceAdapter deviceAdapter = new MockDeviceAdapter();
+        deviceAdapter.setDeviceScanEmitter(new DeviceScanEmitter() {
+            @Override
+            public void emit(ScanListener listener) {
+                DeviceInfo deviceInfo = new DeviceInfo();
+                deviceInfo.deviceName = "Device A";
+                listener.onDeviceFound(deviceInfo);
+            }
+        });
+        factory.setDeviceAdapter(deviceAdapter);
 
-        this.manager.setScannerFactory(new MockScannerFactory());
+        this.manager.setScannerFactory(factory);
         ArrayList<DeviceInfo> devices = new ArrayList<DeviceInfo>();
 
         ScanListener listener = new ScanListener() {
@@ -56,7 +68,28 @@ public class BluetoothManagerTest {
 
     @Test
     public void testScan_for3Devices() {
-        this.manager.setScannerFactory(new MockScannerFactory3());
+        MockScannerFactory factory = new MockScannerFactory();
+        MockDeviceAdapter deviceAdapter = new MockDeviceAdapter();
+        deviceAdapter.setDeviceScanEmitter(new DeviceScanEmitter() {
+            @Override
+            public void emit(final ScanListener listener) {
+                final List<DeviceInfo> devices = new ArrayList<DeviceInfo>();
+                devices.add(new DeviceInfo("Device A"));
+                devices.add(new DeviceInfo("Device B"));
+                devices.add(new DeviceInfo("Device C"));
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (DeviceInfo device : devices) {
+                            listener.onDeviceFound(device);
+                        }
+                    }
+                }).start();
+            }
+        });
+        factory.setDeviceAdapter(deviceAdapter);
+        this.manager.setScannerFactory(factory);
+
         ArrayList<DeviceInfo> devices = new ArrayList<DeviceInfo>();
 
         ScanListener listener = new ScanListener() {
