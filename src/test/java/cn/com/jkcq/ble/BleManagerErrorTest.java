@@ -14,12 +14,12 @@ import static cn.com.jkcq.ble.Constants.*;
  */
 
 
-public class BluetoothManagerErrorTest {
-    private BluetoothManager manager = null;
+public class BleManagerErrorTest {
+    private BleManager manager = null;
 
     @Before
     public void setUp() {
-        this.manager = new BluetoothManager();
+        this.manager = new BleManager();
     }
 
     @Test

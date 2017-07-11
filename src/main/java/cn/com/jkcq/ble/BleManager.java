@@ -10,15 +10,15 @@ import static cn.com.jkcq.ble.Constants.*;
 /**
  * Created by edwardzhou on 2017/7/3.
  */
-public class BluetoothManager {
-    private static BluetoothManager instance = null;
+public class BleManager {
+    private static BleManager instance = null;
     private DeviceAdapter adapter = null;
     private Map<String, DeviceDriver> drivers = new HashMap<String, DeviceDriver>();
     private ScannerFactory scannerFactory = null;
     private RealTimeDataListener readTimeDataListener = null;
     private DeviceDriver connectedDriver = null;
 
-    public BluetoothManager() {
+    public BleManager() {
         this.resetDefaultAdapter();
     }
 
@@ -38,9 +38,9 @@ public class BluetoothManager {
         this.adapter = adapter;
     }
 
-    public static BluetoothManager getInstance() {
+    public static BleManager getInstance() {
         if (instance == null) {
-            instance = new BluetoothManager();
+            instance = new BleManager();
         }
 
         return instance;

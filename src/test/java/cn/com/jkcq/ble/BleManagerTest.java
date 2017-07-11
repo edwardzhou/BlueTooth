@@ -18,12 +18,12 @@ import static cn.com.jkcq.ble.Constants.*;
 /**
  * Created by edwardzhou on 2017/7/3.
  */
-public class BluetoothManagerTest {
-    private BluetoothManager manager = null;
+public class BleManagerTest {
+    private BleManager manager = null;
 
     @Before
     public void setUp(){
-        this.manager = new BluetoothManager();
+        this.manager = new BleManager();
     }
 
     public void tearDown(){

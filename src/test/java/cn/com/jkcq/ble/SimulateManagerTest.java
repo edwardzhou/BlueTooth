@@ -1,6 +1,5 @@
 package cn.com.jkcq.ble;
 
-import cn.com.jkcq.ble.drivers.simulate.SimulateDriver;
 import cn.com.jkcq.ble.drivers.simulate.SimulateDriverFactory;
 
 import org.junit.Before;
@@ -15,11 +14,11 @@ import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.COMMAND_REAL_TI
  */
 public class SimulateManagerTest {
 
-    private BluetoothManager manager = null;
+    private BleManager manager = null;
 
     @Before
     public void setUp() {
-        manager = new BluetoothManager();
+        manager = new BleManager();
         DeviceDriver simDriver = SimulateDriverFactory.createDriver();
         manager.registerDriver(simDriver);
     }
