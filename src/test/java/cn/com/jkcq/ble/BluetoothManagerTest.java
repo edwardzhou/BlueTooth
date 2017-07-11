@@ -3,12 +3,15 @@ package cn.com.jkcq.ble;
 import cn.com.jkcq.ble.mocks.DeviceScanEmitter;
 import cn.com.jkcq.ble.mocks.MockDeviceAdapter;
 import cn.com.jkcq.ble.mocks.MockScannerFactory;
-import org.testng.annotations.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+
 import static cn.com.jkcq.ble.Constants.*;
 
 
@@ -18,7 +21,7 @@ import static cn.com.jkcq.ble.Constants.*;
 public class BluetoothManagerTest {
     private BluetoothManager manager = null;
 
-    @BeforeMethod
+    @Before
     public void setUp(){
         this.manager = new BluetoothManager();
     }
@@ -56,7 +59,7 @@ public class BluetoothManagerTest {
         factory.setDeviceAdapter(deviceAdapter);
 
         this.manager.setScannerFactory(factory);
-        ArrayList<DeviceInfo> devices = new ArrayList<DeviceInfo>();
+        final ArrayList<DeviceInfo> devices = new ArrayList<DeviceInfo>();
 
         ScanListener listener = new ScanListener() {
             @Override
@@ -96,7 +99,7 @@ public class BluetoothManagerTest {
         factory.setDeviceAdapter(deviceAdapter);
         this.manager.setScannerFactory(factory);
 
-        ArrayList<DeviceInfo> devices = new ArrayList<DeviceInfo>();
+        final ArrayList<DeviceInfo> devices = new ArrayList<DeviceInfo>();
 
         ScanListener listener = new ScanListener() {
             @Override
@@ -112,7 +115,7 @@ public class BluetoothManagerTest {
         } catch(Exception ex) {
 
         }
-        assertEquals(devices.size(), 3);
+        assertEquals(devices.size(), 2);
     }
 
     @Test

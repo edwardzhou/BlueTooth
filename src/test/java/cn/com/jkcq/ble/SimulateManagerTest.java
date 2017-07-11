@@ -2,13 +2,13 @@ package cn.com.jkcq.ble;
 
 import cn.com.jkcq.ble.drivers.simulate.SimulateDriver;
 import cn.com.jkcq.ble.drivers.simulate.SimulateDriverFactory;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import static cn.com.jkcq.ble.drivers.simulate.SimulateConstants.COMMAND_REAL_TIME_DATA;
-import static org.junit.Assert.assertTrue;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
+
 
 /**
  * Created by edwardzhou on 2017/7/7.
@@ -17,7 +17,7 @@ public class SimulateManagerTest {
 
     private BluetoothManager manager = null;
 
-    @BeforeMethod
+    @Before
     public void setUp() {
         manager = new BluetoothManager();
         DeviceDriver simDriver = SimulateDriverFactory.createDriver();
@@ -27,7 +27,7 @@ public class SimulateManagerTest {
     /**
      * 测试模拟设备链接
      */
-    @Test(groups = {"Simulate"})
+    @Test
     public void testConnect() {
         DeviceInfo deviceInfo = new DeviceInfo();
         deviceInfo.deviceName = "SimulateDriver";

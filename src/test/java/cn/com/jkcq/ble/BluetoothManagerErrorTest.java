@@ -1,10 +1,11 @@
 package cn.com.jkcq.ble;
 
-import cn.com.jkcq.ble.mocks.MockDeviceAdapter;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import cn.com.jkcq.ble.mocks.MockDeviceAdapter;
+
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import static cn.com.jkcq.ble.Constants.*;
 
@@ -16,7 +17,7 @@ import static cn.com.jkcq.ble.Constants.*;
 public class BluetoothManagerErrorTest {
     private BluetoothManager manager = null;
 
-    @BeforeMethod
+    @Before
     public void setUp() {
         this.manager = new BluetoothManager();
     }
